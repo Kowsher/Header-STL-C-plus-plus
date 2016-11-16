@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main ()
+{
+    map<int,int>mymap;
+    int input[]={-102,1,134565589,134565589,-102,66666668,134565589,66666668,-102,1,-2};
+    int ln=sizeof(input)/sizeof(int);///array size
+    for(int i=1; i<=ln; i++){
+            int s=input[i];
+        if(mymap.find(s)==mymap.end()){ ///x is not compressed
+            mymap[s]=i;
+        }
+
+    }
+    for(auto& x: mymap){
+        cout<<x.first<<" = "<<x.second<<endl;
+    }
+
+
+  return 0;
+}
+
