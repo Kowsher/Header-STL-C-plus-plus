@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+#include<map>
+using namespace std;
+int main(){
+    map<string,int>my_map; ///declare string as key and int as value
+
+    my_map["shuvo"]=1;
+    my_map["shamim"]=2;
+    my_map["arnob"]=3;
+     map<string,int>::iterator it; ///here iterator is  object point to map
+    for(it=my_map.begin();it!=my_map.end(); it++){
+        cout<<it->first<<" = "<<it->second<<endl;
+    }
+    ///there is another way to print such as
+    for(auto&x: my_map){
+        cout<<x.first<<" = "<<x.second<<endl;
+    }
+    ///Remember map always work as Sequence , if u want to print  reverse
+    map<string,int>::reverse_iterator rrit; ///or u can by auto like as
+    for(auto rit=my_map.rbegin();rit!=my_map.rend();rit++){
+        cout<<rit->first<<" = "<<rit->second<<endl;
+    }
+    ///if u want to check map empty and wanna get size
+    if(my_map.empty())cout<<"this map is empty"<<endl;
+    else cout<<"this map is not empty"<<endl;
+    cout<<my_map.size()<<endl;
+
+    if(my_map.max_size()>100)cout<<"this map is under 100"<<endl;///use map.size to
+    else cout<<"this map is above 100"<<endl;
+    ///if we want to add new value in my_map  we can use 'insert' stl function using pair like that
+
+    my_map.insert(pair<string,int>("nstu",4));
+    for(auto& x: my_map){
+        cout<<x.first<<" = "<<x.second<<endl;
+    }
+    /// to get  a particular  value from key we can use 'find' stl
+    it=my_map.find("nstu"); ///here we find "nstu" string from key
+    cout<<it->first<<" = "<<it->second<<endl;
+    ///now we erase a value .then first we have to find this value using fins stl the bye using erase() we can delete this value
+    my_map.erase(it); ///here we delete nstu key
+
+    map<string,int>a_map;
+    a_map["sajjat"]=1;///at()is another kind to process to take input
+    a_map["forhad"]=2;
+    a_map["mehrab"]=3;
+
+    ///now we sawap my_map and a_map like that;
+    my_map.swap(a_map);
+    for(auto& x: my_map){
+        cout<<x.first<<" = "<<x.second<<endl;
+    }
+    cout<<"input a name: ";///use of count() stl
+    string str;cin>>str;
+    a_map.count(str)?cout<<str<<" is a member of nstu_s_cube"<<endl:cout<<str<<" is not a member of nstu_s_cube"<<endl;
+
+    map<string,int>:: iterator lob,upb;
+    lob=my_map.lower_bound("mehrab");
+    upb=my_map.upper_bound("sajjat");
+    my_map.erase(lob,upb);
+    cout<<my_map.size()<<endl;
+
+    my_map.clear();///clear the declare map
+    cout<<"here size of map"<<my_map.size()<<endl;
+
+return 0;
+}
