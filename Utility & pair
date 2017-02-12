@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+#include<utility> ///This header contains utilities in unrelated domains
+using namespace std;
+
+int main()
+{
+    int x[4];
+    int y[]={1,2,3,4};
+    swap(x,y);
+    for(int i: x)cout<<i<<" ";
+    cout<<endl;
+
+
+    string st="ahmed";
+    string st1="shuvo";
+    vector<string>m;
+    m.push_back(move(st));///move string from st to m vector
+    m.push_back(st1);///copies string from st1 to m vector
+    cout<<st<<" "<<st1<<endl;
+
+    ///comes to pair using utitlity
+
+    pair<string,int>p1; ///default constructor
+    pair<string,int>p2("this is p2",3); ///vlaue inti
+    pair<string,int>p3(p1); ///copy constructor
+
+    p1=make_pair("this is p1", 4);
+    ///print;
+
+
+
+    return 0;
+}
