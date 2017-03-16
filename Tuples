@@ -1,0 +1,57 @@
+// C++ code to demonstrate tuple, get() and make_pair()
+#include<iostream>
+#include<tuple> // for tuple
+using namespace std;
+int main()
+{
+    // Declaring tuple
+    tuple <char, int, float> geek;
+
+    // Assigning values to tuple using make_tuple()
+    geek = make_tuple('a', 10, 15.5);
+
+    // Printing initial tuple values using get()
+    cout << "The initial values of tuple are : ";
+    cout << get<0>(geek) << " " << get<1>(geek)<< " " << get<2>(geek) << endl;
+
+    // Use of get() to change values of tuple
+    get<0>(geek) = 'b';
+    get<2>(geek) =  20.5;
+
+     // Printing modified tuple values
+    cout << "The modified values of tuple are : ";
+    cout << get<0>(geek) << " " << get<1>(geek);
+    cout << " " << get<2>(geek) << endl;
+    int sz=tuple_size<decltype(geek)>::value;
+     cout << "The size of tuple is : "<< sz << endl;
+     ///use of tie
+
+     char ch;int vl;float fl;
+
+    ///use tie with ignore
+    tie(ch,ignore,fl)=geek;
+    cout<<ch<<" "<<vl<<" "<<fl<<endl; ///there is not value of vl.as if it's ignord
+    ///use tie without ignore
+    tie(ch,vl,fl)=geek;
+    cout<<ch<<" "<<vl<<" "<<fl<<endl;
+
+
+    ///. tuple_cat() :- This function concatenates two tuples and returns a new tuple.
+    // Initializing 1st tuple
+    tuple <int,char,float> tup1(20,'g',17.5);
+
+    // Initializing 2nd tuple
+    tuple <int,char,float> tup2(30,'f',10.5);
+
+    // Concatenating 2 tuples to return a new tuple
+    auto tup3 = tuple_cat(tup1,tup2);
+
+    // Displaying new tuple elements
+    cout << "The new tuple elements in order are : ";
+    cout << get<0>(tup3) << " " << get<1>(tup3) << " ";
+    cout << get<2>(tup3) << " " << get<3>(tup3) << " ";
+    cout << get<4>(tup3) << " " << get<5>(tup3) << endl;
+
+
+    return 0;
+}
